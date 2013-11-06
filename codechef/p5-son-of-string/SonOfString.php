@@ -72,10 +72,17 @@ class SonOfString {
         $n = abs($n);
         $m = abs($m);
 
-        if ($n==0 and $m==0)
-            return 1; //avoid infinite recursion
-        if ($n == $m and $n >= 1)
+        if ($n == $m)
             return $n;
+
+        if ($n == 0) {
+            return $m;
+        }
+
+        if ($m == 0) {
+            return $n;
+        }
+
         return ($m < $n) ? $this->computeGreatestCommonDivisor($n - $m, $n)
             : $this->computeGreatestCommonDivisor($n, $m - $n);
     }
@@ -87,6 +94,12 @@ class SonOfString {
      * @return int The lowest common multiple between the two provided numbers.
      */
     public function computeLowestCommonMultiple($n, $m) {
+        if ($n == 0)
+            return $m;
+
+        if ($m == 0)
+            return $n;
+
         return $m * ($n / $this->computeGreatestCommonDivisor($n, $m - $n));
     }
 
@@ -113,9 +126,7 @@ class SonOfString {
         $lcmScore = $digits[0];
 
         for ($index = 1; $index < count($digits); $index ++) {
-            if ($digits[$index]) {
-                $lcmScore = $this->computeLowestCommonMultiple($lcmScore, $digits[$index]);
-            }
+            $lcmScore = $this->computeLowestCommonMultiple($lcmScore, $digits[$index]);
         }
 
         return $lcmScore;
