@@ -113,7 +113,9 @@ class SonOfString {
         $lcmScore = $digits[0];
 
         for ($index = 1; $index < count($digits); $index ++) {
-            $lcmScore = $this->computeLowestCommonMultiple($lcmScore, $digits[$index]);
+            if ($digits[$index]) {
+                $lcmScore = $this->computeLowestCommonMultiple($lcmScore, $digits[$index]);
+            }
         }
 
         return $lcmScore;
@@ -213,4 +215,3 @@ class SonOfString {
         return $primeSubstring . $oddString;
     }
 }
-

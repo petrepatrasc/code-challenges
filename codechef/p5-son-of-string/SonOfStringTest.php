@@ -43,6 +43,9 @@ class SonOfStringTest extends PHPUnit_Framework_TestCase {
         $result = $this->son->computeGreatestCommonDivisor(2, 3);
         $this->assertEquals(1, $result);
 
+        $result = $this->son->computeGreatestCommonDivisor(2, 0);
+        $this->assertEquals(2, $result);
+
         $result = $this->son->computeGreatestCommonDivisor(3, 2);
         $this->assertEquals(1, $result);
 
@@ -210,5 +213,9 @@ class SonOfStringTest extends PHPUnit_Framework_TestCase {
         $this->son->setProblemString('56969797129260783535171');
         $actualSon = $this->son->getSonForString();
         $this->assertEquals('181', $actualSon);
+
+        $this->son->setProblemString('4563573640980834232');
+        $actualSon = $this->son->getSonForString();
+        $this->assertEquals('091', $actualSon);
     }
 }
