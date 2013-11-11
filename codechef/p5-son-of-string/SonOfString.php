@@ -212,6 +212,10 @@ class SonOfString {
      * @return string
      */
     public function getSonForString() {
+        if (strlen($this->problemString) <= 1) {
+            return $this->problemString;
+        }
+
         // generate prime numbers
         $this->getPrimeNumbersSmallerThanTheProblemString();
 
