@@ -1,0 +1,1 @@
+<?function b(){$a='';for($b=100;$b;){$c=--$b-1?'s':'';$d=($b?:99)." bottle$c of beer";$e="$d on the wall";$a.=$b?($b<99?"Take one down and pass it around, $e.\n\n":"")."$e, $d.\n":"Go to the store and buy some more, $e.";}return $a;}echo b();
