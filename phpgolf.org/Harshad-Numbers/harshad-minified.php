@@ -1,0 +1,1 @@
+<?for($a=1;$a<=10000;$a++){echo($a%array_sum(str_split($a)))?'':"$a\n";}
