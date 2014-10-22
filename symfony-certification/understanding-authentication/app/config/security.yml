@@ -22,6 +22,11 @@ security:
             pattern:  ^/demo/secured/login$
             security: false
 
+        main:
+            pattern: ^/hello
+            stateless: true
+            custom_oauth: true
+
         secured_area:
             pattern:    ^/demo/secured/
             form_login:

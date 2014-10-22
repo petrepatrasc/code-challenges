@@ -5,3 +5,10 @@ services:
 #    petrepatrasc_authentication.example:
 #        class: %petrepatrasc_authentication.example.class%
 #        arguments: [@service_id, "plain_value", %parameter%]
+    petrepatrasc.auth.oauth.provider:
+        class: petrepatrasc\AuthenticationBundle\Security\OauthProvider
+        arguments: [""]
+
+    petrepatrasc.auth.oauth.listener:
+        class: petrepatrasc\AuthenticationBundle\Security\OauthListener
+        arguments: [@security.context, @security.authentication.manager]
