@@ -1,3 +1,11 @@
 petrepatrasc_symfony_certification_understanding_authentication_homepage:
     path:     /hello/{name}
     defaults: { _controller: petrepatrascSymfonyCertificationUnderstandingAuthenticationBundle:Default:index }
+
+auth.oauth.login:
+    path: /oauth/login/{username}
+    defaults: { _controller: petrepatrascSymfonyCertificationUnderstandingAuthenticationBundle:OAuth:login }
+
+auth.oauth.check:
+    path: /oauth/check
+    defaults: { _controller: petrepatrascSymfonyCertificationUnderstandingAuthenticationBundle:OAuth:check }

@@ -5,58 +5,35 @@ namespace petrepatrasc\SymfonyCertification\UnderstandingAuthenticationBundle\Co
 
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Post\PostBodyInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class OAuthController extends Controller
 {
-    public function loginOauthAction()
+    public function loginAction($username)
     {
-        $client = new Client;
+        $client = new Client();
+        $url = $this->generateUrl('auth.oauth.check', array(), UrlGeneratorInterface::ABSOLUTE_URL);
 
-        $request = $client->createRequest('POST', 'https://api.twitter.com/oauth/request_token');
+        $request = $client->createRequest('POST', $url);
+        /** @var PostBodyInterface $postBody */
         $postBody = $request->getBody();
 
-        $request->setHeader('User-Agent', 'Symfony HTTP Client');
-
-        $authorizationHeader = $this->generateAuthenticationHeader();
-        $request->setHeader('Accept', '*/*');
-        $request->setHeader('Authorization', 'OAuth ' . $authorizationHeader);
-
-        /*echo '<pre>';
-        echo (string)$request;
-        die;*/
+        $postBody->setField('username', $username);
 
         $response = $client->send($request);
-        var_dump($response);die;
+        $token = $response->getBody()->getContents();
 
-        return new Response('Heya!');
+        return new Response($token);
     }
 
-    protected function generateAuthenticationHeader()
+    public function checkAction(Request $request)
     {
-        $twitterConsumerKey = $this->container->getParameter('twitter_consumer_key');
-        $twitterConsumerSecret = $this->container->getParameter('twitter_consumer_secret');
-        $twitterNonce = $this->generateRandomString(32);
-
-        $authorisationParameters = [
-            'oauth_callback' => 'http%3A%2F%2Flocalhost%2Fapp_dev.php%2Foauth%2Fresponse',
-            'oauth_consumer_key' => $twitterConsumerKey,
-            'oauth_nonce' => $twitterNonce,
-            'oauth_timestamp' => time(),
-            'oauth_version' => '1.0',
-        ];
-
-        $authorisationParameters = array_map(function($k, $v){
-            return "$k=$v";
-        }, array_keys($authorisationParameters), array_values($authorisationParameters));
-
-        return implode(',', $authorisationParameters);
-    }
-
-    public function oauthTokenResponseAction()
-    {
-
+        $username = $request->get('username');
+        return new Response(base64_encode($username));
     }
 
     protected function generateRandomString($length = 32)
