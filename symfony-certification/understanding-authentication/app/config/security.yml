@@ -1,6 +1,7 @@
 security:
     encoders:
         Symfony\Component\Security\Core\User\User: plaintext
+        peterpatrasc\AuthenticationBundle\Security\OauthUser: sha512
 
     role_hierarchy:
         ROLE_ADMIN:       ROLE_USER
@@ -12,6 +13,9 @@ security:
                 users:
                     user:  { password: userpass, roles: [ 'ROLE_USER' ] }
                     admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
+
+        oauth:
+            id: petrepatrasc.auth.user.provider
 
     firewalls:
         dev:
@@ -26,6 +30,7 @@ security:
             pattern: ^/hello
             stateless: true
             custom_oauth: true
+            provider: oauth
 
         secured_area:
             pattern:    ^/demo/secured/

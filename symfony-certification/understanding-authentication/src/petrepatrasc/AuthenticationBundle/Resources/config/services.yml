@@ -12,3 +12,6 @@ services:
     petrepatrasc.auth.oauth.listener:
         class: petrepatrasc\AuthenticationBundle\Security\OauthListener
         arguments: [@security.context, @security.authentication.manager]
+
+    petrepatrasc.auth.user.provider:
+        class: petrepatrasc\AuthenticationBundle\Security\OauthUserProvider
