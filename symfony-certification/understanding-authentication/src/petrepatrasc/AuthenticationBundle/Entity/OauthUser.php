@@ -1,7 +1,7 @@
 <?php
 
 
-namespace petrepatrasc\AuthenticationBundle\Security;
+namespace petrepatrasc\AuthenticationBundle\Entity;
 
 
 use Symfony\Component\Security\Core\Role\Role;
@@ -43,6 +43,9 @@ class OauthUser implements UserInterface, EquatableInterface
      */
     protected $salt;
 
+    /**
+     * @var array
+     */
     protected $roles;
 
     public function __construct($username, $password, $salt, array $roles)
@@ -110,6 +113,18 @@ class OauthUser implements UserInterface, EquatableInterface
     }
 
     /**
+     * @param array $roles
+     * @return $this
+     */
+    public function setRoles($roles)
+    {
+        $this->roles = $roles;
+        return $this;
+    }
+
+
+
+    /**
      * Returns the password used to authenticate the user.
      *
      * This should be the encoded password. On authentication, a plain-text
@@ -154,5 +169,15 @@ class OauthUser implements UserInterface, EquatableInterface
     {
 
     }
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+
 
 } 

@@ -4,6 +4,8 @@
 namespace petrepatrasc\AuthenticationBundle\Security;
 
 
+use Doctrine\Common\Persistence\ObjectManager;
+use petrepatrasc\AuthenticationBundle\Entity\OauthUser;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -11,6 +13,14 @@ use Symfony\Component\Security\Core\User\UserProviderInterface;
 
 class OauthUserProvider implements UserProviderInterface
 {
+    /** @var ObjectManager */
+    protected $manager;
+
+    public function __construct(ObjectManager $manager)
+    {
+        return $this->manager = $manager;
+    }
+
     /**
      * Loads the user for the given username.
      *
@@ -28,7 +38,10 @@ class OauthUserProvider implements UserProviderInterface
      */
     public function loadUserByUsername($username)
     {
-        return new OauthUser('petre', 'test', 'daj21oi412n', ['ROLE_USER']);
+        $user = $this->manager->getRepository('petrepatrascAuthenticationBundle:OauthUser')->findOneBy(['username' => $username]);
+        $user->setRoles(['ROLE_USER']);
+
+        return $user;
     }
 
     /**
@@ -58,7 +71,7 @@ class OauthUserProvider implements UserProviderInterface
      */
     public function supportsClass($class)
     {
-        return $class === 'petrepatrasc\AuthenticationBundle\Security\OauthUser';
+        return $class === 'petrepatrasc\AuthenticationBundle\Entity\OauthUser';
     }
 
 } 

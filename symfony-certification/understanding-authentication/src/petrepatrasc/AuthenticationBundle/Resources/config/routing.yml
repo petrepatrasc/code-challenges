@@ -1,3 +1,7 @@
 petrepatrasc_authentication_homepage:
     path:     /hello/{name}
     defaults: { _controller: petrepatrascAuthenticationBundle:Default:index }
+
+authentication.generate:
+    path:     /generate
+    defaults: { _controller: petrepatrascAuthenticationBundle:Default:generateData }

@@ -11,7 +11,8 @@ services:
 
     petrepatrasc.auth.oauth.listener:
         class: petrepatrasc\AuthenticationBundle\Security\OauthListener
-        arguments: [@security.context, @security.authentication.manager]
+        arguments: [@security.context, @security.authentication.manager, @doctrine.orm.entity_manager]
 
     petrepatrasc.auth.user.provider:
         class: petrepatrasc\AuthenticationBundle\Security\OauthUserProvider
+        arguments: [@doctrine.orm.entity_manager]
