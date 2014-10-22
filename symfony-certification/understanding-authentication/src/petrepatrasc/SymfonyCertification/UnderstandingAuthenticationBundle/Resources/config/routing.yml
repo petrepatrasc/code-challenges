@@ -1,0 +1,3 @@
+petrepatrasc_symfony_certification_understanding_authentication_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: petrepatrascSymfonyCertificationUnderstandingAuthenticationBundle:Default:index }

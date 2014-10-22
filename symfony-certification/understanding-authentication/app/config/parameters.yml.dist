@@ -19,3 +19,6 @@ parameters:
     debug_toolbar:          true
     debug_redirects:        false
     use_assetic_controller: true
+
+    twitter_consumer_key: test
+    twitter_consumer_secret: test

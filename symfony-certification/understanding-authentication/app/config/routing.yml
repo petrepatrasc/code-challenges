@@ -1,0 +1,11 @@
+petrepatrasc_symfony_certification_understanding_authentication:
+    resource: "@petrepatrascSymfonyCertificationUnderstandingAuthenticationBundle/Resources/config/routing.yml"
+    prefix:   /
+
+auth.oauth.login:
+    path: /oauth/login
+    defaults: { _controller: petrepatrascSymfonyCertificationUnderstandingAuthenticationBundle:OAuth:loginOauth }
+
+auth.oauth.token.response:
+    path: /oauth/token/response
+    defaults: { _controller: petrepatrascSymfonyCertificationUnderstandingAuthenticationBundle:OAuth:oauthTokenResponse }

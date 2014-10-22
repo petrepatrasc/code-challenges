@@ -1,0 +1,4 @@
+services:
+#    petrepatrasc_symfony_certification_understanding_authentication.example:
+#        class: petrepatrasc\SymfonyCertification\UnderstandingAuthenticationBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
