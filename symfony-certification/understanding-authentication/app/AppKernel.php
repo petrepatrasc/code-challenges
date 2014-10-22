@@ -16,7 +16,7 @@ class AppKernel extends Kernel
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-            new petrepatrasc\SymfonyCertification\UnderstandingAuthenticationBundle\petrepatrascSymfonyCertificationUnderstandingAuthenticationBundle(),
+            new petrepatrasc\AuthenticationBundle\petrepatrascAuthenticationBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

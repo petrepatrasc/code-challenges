@@ -1,0 +1,7 @@
+parameters:
+#    petrepatrasc_authentication.example.class: petrepatrasc\AuthenticationBundle\Example
+
+services:
+#    petrepatrasc_authentication.example:
+#        class: %petrepatrasc_authentication.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

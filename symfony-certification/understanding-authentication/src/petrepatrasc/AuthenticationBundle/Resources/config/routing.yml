@@ -1,0 +1,3 @@
+petrepatrasc_authentication_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: petrepatrascAuthenticationBundle:Default:index }

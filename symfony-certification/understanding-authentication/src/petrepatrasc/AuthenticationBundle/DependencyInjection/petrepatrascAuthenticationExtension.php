@@ -1,6 +1,6 @@
 <?php
 
-namespace petrepatrasc\SymfonyCertification\UnderstandingAuthenticationBundle\DependencyInjection;
+namespace petrepatrasc\AuthenticationBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
@@ -12,10 +12,10 @@ use Symfony\Component\DependencyInjection\Loader;
  *
  * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/extension.html}
  */
-class petrepatrascSymfonyCertificationUnderstandingAuthenticationExtension extends Extension
+class petrepatrascAuthenticationExtension extends Extension
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function load(array $configs, ContainerBuilder $container)
     {

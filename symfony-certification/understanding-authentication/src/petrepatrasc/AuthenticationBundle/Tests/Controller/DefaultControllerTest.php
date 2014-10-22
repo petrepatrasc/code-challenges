@@ -1,6 +1,6 @@
 <?php
 
-namespace petrepatrasc\SymfonyCertification\UnderstandingAuthenticationBundle\Tests\Controller;
+namespace petrepatrasc\AuthenticationBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
