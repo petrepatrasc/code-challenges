@@ -3,7 +3,7 @@ petrepatrasc_symfony_certification_understanding_authentication_homepage:
     defaults: { _controller: petrepatrascSymfonyCertificationUnderstandingAuthenticationBundle:Default:index }
 
 auth.oauth.login:
-    path: /oauth/login/{username}
+    path: /oauth/login/{username}/{password}
     defaults: { _controller: petrepatrascSymfonyCertificationUnderstandingAuthenticationBundle:OAuth:login }
 
 auth.oauth.check:

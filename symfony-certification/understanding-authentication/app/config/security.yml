@@ -8,5 +8,9 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
-        default:
-            anonymous: ~
+        main:
+            pattern: ^/hello
+            custom_oauth:
+                check_path: oauth.login
+            logout: true
+            anonymous: true

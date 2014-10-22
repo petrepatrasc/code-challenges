@@ -1,3 +1,6 @@
+oauth.login:
+    pattern: /oauth/custom/login
+
 petrepatrasc_symfony_certification_understanding_authentication:
     resource: "@petrepatrascSymfonyCertificationUnderstandingAuthenticationBundle/Resources/config/routing.yml"
     prefix:   /

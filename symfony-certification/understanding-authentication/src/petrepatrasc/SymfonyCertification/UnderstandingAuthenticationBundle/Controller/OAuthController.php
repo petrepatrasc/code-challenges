@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class OAuthController extends Controller
 {
-    public function loginAction($username)
+    public function loginAction($username, $password)
     {
         $client = new Client();
         $url = $this->generateUrl('auth.oauth.check', array(), UrlGeneratorInterface::ABSOLUTE_URL);
@@ -23,6 +23,7 @@ class OAuthController extends Controller
         $postBody = $request->getBody();
 
         $postBody->setField('username', $username);
+        $postBody->setField('password', $password);
 
         $response = $client->send($request);
         $token = $response->getBody()->getContents();
@@ -33,7 +34,11 @@ class OAuthController extends Controller
     public function checkAction(Request $request)
     {
         $username = $request->get('username');
-        return new Response(base64_encode($username));
+        $password = $request->get('password');
+
+        $token = base64_encode($username) . base64_encode($password);
+
+        return new Response($token);
     }
 
     protected function generateRandomString($length = 32)
