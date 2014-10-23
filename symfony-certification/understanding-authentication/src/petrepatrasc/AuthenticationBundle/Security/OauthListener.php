@@ -38,20 +38,25 @@ class OauthListener implements ListenerInterface
     public function handle(GetResponseEvent $event)
     {
         $request = $event->getRequest();
-        $username = $request->get('username');
-        $password = $request->get('password');
 
-        $user = $this->manager->getRepository('petrepatrascAuthenticationBundle:OauthUser')->findOneBy([
-            'username' => $username,
-            'password' => $password,
-        ]);
+        if (null === $this->securityContext->getToken() || !$this->securityContext->getToken()->isAuthenticated()) {
+            $username = $request->get('username');
+            $password = $request->get('password');
+
+            $user = $this->manager->getRepository('petrepatrascAuthenticationBundle:OauthUser')->findOneBy([
+                'username' => $username,
+                'password' => $password,
+            ]);
+        } else {
+            $user = $this->securityContext->getToken()->getUser();
+        }
 
         if (null === $user) {
             throw new AuthenticationException('No you don\'t!');
         }
 
         $token = new OauthToken();
-        $token->setCredentials($username);
+        $token->setCredentials($user->getUsername());
 
         $authToken = $this->authenticationManager->authenticate($token);
         $this->securityContext->setToken($authToken);

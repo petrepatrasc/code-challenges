@@ -13,7 +13,8 @@ class DefaultController extends Controller
         return $this->render('petrepatrascAuthenticationBundle:Default:index.html.twig', array('name' => $name));
     }
 
-    public function generateDataAction() {
+    public function generateDataAction()
+    {
         $username = $this->generateRandomString(10);
         $password = 'test';
         $salt = $this->generateRandomString(3);
@@ -27,7 +28,13 @@ class DefaultController extends Controller
         return new Response("User {$username}, with password {$password} and salt {$salt} has been generated!");
     }
 
-    protected function generateRandomString($length = 10) {
+    public function secondaryFirewallAction($name)
+    {
+        return $this->render('petrepatrascAuthenticationBundle:Default:index.html.twig', array('name' => $name));
+    }
+
+    protected function generateRandomString($length = 10)
+    {
         return substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, $length);
     }
 }

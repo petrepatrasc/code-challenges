@@ -28,9 +28,13 @@ security:
 
         main:
             pattern: ^/hello
-            stateless: true
             custom_oauth: true
             provider: oauth
+
+        secondary:
+            pattern: ^/secondary
+            custom_oauth: true
+            provider: in_memory
 
         secured_area:
             pattern:    ^/demo/secured/

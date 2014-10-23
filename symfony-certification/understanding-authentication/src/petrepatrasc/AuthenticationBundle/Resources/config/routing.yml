@@ -2,6 +2,10 @@ petrepatrasc_authentication_homepage:
     path:     /hello/{name}
     defaults: { _controller: petrepatrascAuthenticationBundle:Default:index }
 
+authentication.homepage.secondary:
+    path:     /secondary/{name}
+    defaults: { _controller: petrepatrascAuthenticationBundle:Default:secondaryFirewall }
+
 authentication.generate:
     path:     /generate
     defaults: { _controller: petrepatrascAuthenticationBundle:Default:generateData }
