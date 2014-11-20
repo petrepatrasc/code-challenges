@@ -1,0 +1,10 @@
+services:
+#    petrepatrasc_kernel.example:
+#        class: petrepatrasc\KernelBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
+
+  pp.listener.header:
+      class: petrepatrasc\KernelBundle\Listener\HasCorrectHeaderListener
+      arguments: []
+      tags:
+        - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }

@@ -1,0 +1,4 @@
+petrepatrasc_kernel:
+    resource: "@petrepatrascKernelBundle/Resources/config/routing.yml"
+    prefix:   /
+
