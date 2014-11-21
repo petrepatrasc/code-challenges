@@ -15,14 +15,18 @@ class HasAuthenticationTokenListener
     {
         $authToken = $event->getRequest()->headers->get('authentication');
 
-        if (null === $authToken || 'apiKeyTest' !== $authToken) {
+        if (null === $authToken) {
             $controller = [
                 new DefaultController(),
                 'authenticationHeaderInvalidAction'
             ];
 
             $event->setController($controller);
-            return;
+            $event->stopPropagation();
+        }
+
+        if ('apiKeyTest' !== $authToken) {
+            throw new \Exception('Invalid API key provided', 104);
         }
     }
 } 

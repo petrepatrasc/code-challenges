@@ -14,6 +14,9 @@ class DefaultController extends Controller
 
     public function authenticationHeaderInvalidAction()
     {
-        return new Response('Invalid authentication header', 200);
+        return [
+            'errorMessage' => 'No authentication header provided',
+            'errorCode' => 103
+        ];
     }
 }

@@ -6,9 +6,19 @@ services:
   pp.listener.header:
       class: petrepatrasc\KernelBundle\Listener\HasCorrectHeaderListener
       tags:
-        - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
+        - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest, priority: 100 }
 
   pp.listener.authentication_token:
       class: petrepatrasc\KernelBundle\Listener\HasAuthenticationTokenListener
       tags:
-        - { name: kernel.event_listener, event: kernel.controller, method: onKernelController }
+        - { name: kernel.event_listener, event: kernel.controller, method: onKernelController, priority: 100 }
+
+  pp.listener.json:
+      class: petrepatrasc\KernelBundle\Listener\JsonEncryptionListener
+      tags:
+        - { name: kernel.event_listener, event: kernel.view, method: jsonEncryption, priority: 100 }
+
+  pp.listener.exception:
+      class: petrepatrasc\KernelBundle\Listener\KernelException
+      tags:
+        - { name: kernel.event_listener, event: kernel.exception, method: onKernelException, priority: 100 }
