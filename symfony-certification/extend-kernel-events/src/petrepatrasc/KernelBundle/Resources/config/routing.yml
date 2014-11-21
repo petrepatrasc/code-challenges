@@ -1,3 +1,3 @@
 petrepatrasc_kernel_homepage:
-    path:     /hello/{name}
+    path:     /
     defaults: { _controller: petrepatrascKernelBundle:Default:index }

@@ -11,14 +11,17 @@ class HasCorrectHeaderListener
 {
     public function onKernelRequest(GetResponseEvent $event)
     {
-        $requestHeaders = $event->getRequest()->headers;
+        $path = $event->getRequest()->getPathInfo();
+        if (0 !== strpos($path, '/api/user-check')) {
+            $developmentToken = $event->getRequest()->headers->get('development');
 
-        if ('1457' !== $requestHeaders->get('development')) {
-            $response = new Response(
-                'Invalid header specified',
-                503
-            );
-            $event->setResponse($response);
+            if ('1457' !== $developmentToken) {
+                $response = new Response(
+                    'Invalid header specified',
+                    503
+                );
+                $event->setResponse($response);
+            }
         }
     }
 } 

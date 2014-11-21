@@ -5,6 +5,10 @@ services:
 
   pp.listener.header:
       class: petrepatrasc\KernelBundle\Listener\HasCorrectHeaderListener
-      arguments: []
       tags:
         - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
+
+  pp.listener.authentication_token:
+      class: petrepatrasc\KernelBundle\Listener\HasAuthenticationTokenListener
+      tags:
+        - { name: kernel.event_listener, event: kernel.controller, method: onKernelController }
