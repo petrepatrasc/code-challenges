@@ -23,6 +23,7 @@ class HasAuthenticationTokenListener
 
             $event->setController($controller);
             $event->stopPropagation();
+            return;
         }
 
         if ('apiKeyTest' !== $authToken) {

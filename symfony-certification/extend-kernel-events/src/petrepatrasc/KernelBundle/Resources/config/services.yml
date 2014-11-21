@@ -26,4 +26,4 @@ services:
   pp.listener.response:
       class: petrepatrasc\KernelBundle\Listener\EnsureResponseHeader
       tags:
-        - { name: kernel.event_listener, event: kernel.response, method: onKernelResponse, priority: 100 }
+        - { name: kernel.event_listener, event: kernel.response, method: onKernelResponse }
