@@ -6,7 +6,7 @@ namespace petrepatrasc\KernelBundle\Listener;
 
 use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
 
-class EnsureResponseHeader
+class EnsureResponseHeaderListener
 {
     public function onKernelResponse(FilterResponseEvent $event)
     {

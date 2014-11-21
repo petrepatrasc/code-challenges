@@ -16,14 +16,14 @@ services:
   pp.listener.json:
       class: petrepatrasc\KernelBundle\Listener\JsonEncryptionListener
       tags:
-        - { name: kernel.event_listener, event: kernel.view, method: jsonEncryption, priority: 100 }
+        - { name: kernel.event_listener, event: kernel.view, method: onKernelView, priority: 100 }
 
   pp.listener.exception:
-      class: petrepatrasc\KernelBundle\Listener\KernelException
+      class: petrepatrasc\KernelBundle\Listener\CatchExceptionsAsJsonListener
       tags:
         - { name: kernel.event_listener, event: kernel.exception, method: onKernelException, priority: 100 }
 
   pp.listener.response:
-      class: petrepatrasc\KernelBundle\Listener\EnsureResponseHeader
+      class: petrepatrasc\KernelBundle\Listener\EnsureResponseHeaderListener
       tags:
         - { name: kernel.event_listener, event: kernel.response, method: onKernelResponse }

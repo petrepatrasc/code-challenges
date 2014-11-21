@@ -7,7 +7,7 @@ namespace petrepatrasc\KernelBundle\Listener;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 
-class KernelException
+class CatchExceptionsAsJsonListener
 {
 
     public function onKernelException(GetResponseForExceptionEvent $event)

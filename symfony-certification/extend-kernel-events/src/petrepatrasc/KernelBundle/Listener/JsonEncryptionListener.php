@@ -9,7 +9,7 @@ use Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent;
 
 class JsonEncryptionListener
 {
-    public function jsonEncryption(GetResponseForControllerResultEvent $event)
+    public function onKernelView(GetResponseForControllerResultEvent $event)
     {
         if (is_array($event->getControllerResult())) {
             $response = new JsonResponse($event->getControllerResult());
