@@ -18,7 +18,7 @@ class HasAuthenticationTokenListener
         if (null === $authToken) {
             $controller = [
                 new DefaultController(),
-                'authenticationHeaderInvalidAction'
+                'noAuthenticationHeaderAction'
             ];
 
             $event->setController($controller);

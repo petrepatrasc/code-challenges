@@ -12,7 +12,7 @@ class DefaultController extends Controller
         return $this->render('petrepatrascKernelBundle:Default:index.html.twig', array('name' => $name));
     }
 
-    public function authenticationHeaderInvalidAction()
+    public function noAuthenticationHeaderAction()
     {
         return [
             'errorMessage' => 'No authentication header provided',
