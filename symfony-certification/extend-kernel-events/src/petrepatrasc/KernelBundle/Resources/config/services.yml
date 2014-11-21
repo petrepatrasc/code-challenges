@@ -22,3 +22,8 @@ services:
       class: petrepatrasc\KernelBundle\Listener\KernelException
       tags:
         - { name: kernel.event_listener, event: kernel.exception, method: onKernelException, priority: 100 }
+
+  pp.listener.response:
+      class: petrepatrasc\KernelBundle\Listener\EnsureResponseHeader
+      tags:
+        - { name: kernel.event_listener, event: kernel.response, method: onKernelResponse, priority: 100 }
