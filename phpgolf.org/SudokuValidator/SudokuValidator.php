@@ -76,7 +76,7 @@ class SudokuValidator
      */
     public function elementHasBeenAlreadyMatched(array $matched, $element)
     {
-
+        return $matched[$element] === true;
     }
 
     /**
