@@ -4,6 +4,9 @@
 class SudokuValidator
 {
 
+    /**
+     * @var array
+     */
     protected $board;
 
     /**
@@ -14,21 +17,38 @@ class SudokuValidator
         /* Load data here. */
     }
 
+    /**
+     * Check if the row constraints hold.
+     * @return bool
+     */
     public function rowConstraintsHold()
     {
 
     }
 
+    /**
+     * Check if the column constraints hold.
+     * @return bool
+     */
     public function columnConstraintsHold()
     {
 
     }
 
+    /**
+     * Check if the area constraints hold.
+     * @return bool
+     */
     public function areaConstraintsHold()
     {
 
     }
 
+    /**
+     * Check if a string represents a valid Sudoku board.
+     * @param string $inputData
+     * @return bool
+     */
     public function checkBoard($inputData)
     {
         $this->loadBoard($inputData);
@@ -48,12 +68,23 @@ class SudokuValidator
         return true;
     }
 
-    protected function elementHasBeenAlreadyMatched($matched, $element)
+    /**
+     * Check if an element has already been matched in an array.
+     * @param array $matched
+     * @param int $element
+     * @return bool
+     */
+    public function elementHasBeenAlreadyMatched(array $matched, $element)
     {
 
     }
 
-    protected function elementBelongsToCorrectSet($element)
+    /**
+     * Check if an element belongs to the correct data set.
+     * @param int $element
+     * @return bool
+     */
+    public function elementBelongsToCorrectSet($element)
     {
         if ($element < 1 || $element > 9) {
             return false;
@@ -64,5 +95,14 @@ class SudokuValidator
         }
 
         return true;
+    }
+
+    /**
+     * Create a matcher array, filled with false, between 0 and 9.
+     * @return array
+     */
+    public function createMatchArray()
+    {
+        return array_fill(0, 10, false);
     }
 } 
