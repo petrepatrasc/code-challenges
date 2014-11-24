@@ -10,11 +10,23 @@ class SudokuValidator
     protected $board;
 
     /**
+     * Load data unto the board.
      * @param string $data Data, as represented in the input format.
+     * @return array
      */
     public function loadBoard($data)
     {
-        /* Load data here. */
+        $this->board = [];
+
+        $inputRows = explode("\n", $data);
+
+        foreach ($inputRows as $key => $inputRow) {
+            $row = str_split($inputRow);
+
+            $this->board[] = $row;
+        }
+
+        return $this->board;
     }
 
     /**
@@ -23,7 +35,23 @@ class SudokuValidator
      */
     public function rowConstraintsHold()
     {
+        foreach ($this->board as $row) {
+            $matched = $this->createMatchArray();
 
+            foreach ($row as $element) {
+                if (!$this->elementBelongsToCorrectSet($element)) {
+                    return false;
+                }
+
+                if ($this->elementHasBeenAlreadyMatched($matched, $element)) {
+                    return false;
+                }
+
+                $matched[$element] = true;
+            }
+        }
+
+        return true;
     }
 
     /**
@@ -32,7 +60,28 @@ class SudokuValidator
      */
     public function columnConstraintsHold()
     {
+        for ($i = 0; $i < count($this->board[0]); $i++) {
+            $columnElements = [];
+            $matched = $this->createMatchArray();
 
+            for ($j = 0; $j < count($this->board[0]); $j++) {
+                $columnElements[] = $this->board[$j][$i];
+            }
+
+            foreach ($columnElements as $element) {
+                if (!$this->elementBelongsToCorrectSet($element)) {
+                    return false;
+                }
+
+                if ($this->elementHasBeenAlreadyMatched($matched, $element)) {
+                    return false;
+                }
+
+                $matched[$element] = true;
+            }
+        }
+
+        return true;
     }
 
     /**
@@ -41,7 +90,37 @@ class SudokuValidator
      */
     public function areaConstraintsHold()
     {
+        for ($i = 0; $i < count($this->board[0]); $i += 3) {
+            for ($j = 0; $j < count($this->board[0]); $j += 3) {
+                $matched = $this->createMatchArray();
 
+                $areaElements = [
+                    $this->board[$i][$j],
+                    $this->board[$i + 1][$j],
+                    $this->board[$i + 2][$j],
+                    $this->board[$i][$j + 1],
+                    $this->board[$i + 1][$j + 1],
+                    $this->board[$i + 2][$j + 1],
+                    $this->board[$i][$j + 2],
+                    $this->board[$i + 1][$j + 2],
+                    $this->board[$i + 2][$j + 2],
+                ];
+
+                foreach ($areaElements as $element) {
+                    if (!$this->elementBelongsToCorrectSet($element)) {
+                        return false;
+                    }
+
+                    if ($this->elementHasBeenAlreadyMatched($matched, $element)) {
+                        return false;
+                    }
+
+                    $matched[$element] = true;
+                }
+            }
+        }
+
+        return true;
     }
 
     /**
@@ -90,7 +169,7 @@ class SudokuValidator
             return false;
         }
 
-        if ($element !== intval($element)) {
+        if ($element != intval($element)) {
             return false;
         }
 
@@ -105,4 +184,14 @@ class SudokuValidator
     {
         return array_fill(0, 10, false);
     }
+
+    /**
+     * @return array
+     */
+    public function getBoard()
+    {
+        return $this->board;
+    }
+
+
 } 
