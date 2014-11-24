@@ -194,4 +194,14 @@ class SudokuValidator
     }
 
 
-} 
+}
+
+$currentIndex = 0;
+$sudokuValidator = new SudokuValidator();
+
+while ($currentIndex < strlen(SUD)) {
+    $string = substr(SUD, $currentIndex, 89);
+    $currentIndex += 91;
+
+    echo intval($sudokuValidator->checkBoard($string)) . PHP_EOL;
+}

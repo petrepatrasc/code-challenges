@@ -20,3 +20,11 @@ define('SUD', '132579468
 365817924
 879642135');
 
+$currentIndex = 0;
+
+while ($currentIndex < strlen(SUD)) {
+    $string = substr(SUD, $currentIndex, 90);
+    $currentIndex += 91;
+
+    echo $string;
+}
