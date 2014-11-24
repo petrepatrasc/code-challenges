@@ -16,7 +16,7 @@ class SudokuValidator
      */
     public function loadBoard($data)
     {
-        $this->board = [];
+        $this->board = array();
 
         $inputRows = explode("\n", $data);
 
@@ -61,7 +61,7 @@ class SudokuValidator
     public function columnConstraintsHold()
     {
         for ($i = 0; $i < count($this->board[0]); $i++) {
-            $columnElements = [];
+            $columnElements = array();
             $matched = $this->createMatchArray();
 
             for ($j = 0; $j < count($this->board[0]); $j++) {
@@ -94,7 +94,7 @@ class SudokuValidator
             for ($j = 0; $j < count($this->board[0]); $j += 3) {
                 $matched = $this->createMatchArray();
 
-                $areaElements = [
+                $areaElements = array(
                     $this->board[$i][$j],
                     $this->board[$i + 1][$j],
                     $this->board[$i + 2][$j],
@@ -104,7 +104,7 @@ class SudokuValidator
                     $this->board[$i][$j + 2],
                     $this->board[$i + 1][$j + 2],
                     $this->board[$i + 2][$j + 2],
-                ];
+                );
 
                 foreach ($areaElements as $element) {
                     if (!$this->elementBelongsToCorrectSet($element)) {
