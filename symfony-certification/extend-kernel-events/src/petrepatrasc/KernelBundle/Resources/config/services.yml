@@ -18,6 +18,11 @@ services:
       tags:
         - { name: kernel.event_listener, event: kernel.view, method: onKernelView, priority: 100 }
 
+  pp.listener.marion:
+      class: petrepatrasc\KernelBundle\Listener\MarionListener
+      tags:
+        - { name: kernel.event_listener, event: kernel.view, method: marionFixer, priority: 101 }
+
   pp.listener.exception:
       class: petrepatrasc\KernelBundle\Listener\CatchExceptionsAsJsonListener
       tags:

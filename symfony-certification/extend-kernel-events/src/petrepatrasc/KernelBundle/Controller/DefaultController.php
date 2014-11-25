@@ -9,7 +9,9 @@ class DefaultController extends Controller
 {
     public function indexAction($name = 'Petre')
     {
-        return $this->render('petrepatrascKernelBundle:Default:index.html.twig', array('name' => $name));
+        return [
+            'name' => 'Hello Marion!'
+        ];
     }
 
     public function noAuthenticationHeaderAction()
