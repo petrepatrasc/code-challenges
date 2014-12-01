@@ -1,0 +1,3 @@
+tags_cp_migration_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: TagsCPMigrationBundle:Default:index }

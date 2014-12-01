@@ -1,0 +1,4 @@
+tags_cp_migration:
+    resource: "@TagsCPMigrationBundle/Resources/config/routing.yml"
+    prefix:   /
+

@@ -13,7 +13,7 @@ using the two migration bundles.
 ## Plan
 
 1. Create a MigrationBundle to handle initial import operations.
-    1. Create three basic XML files.
+    1. Create two basic XML files.
     2. Create entities for XML files.
     3. Create serialize services.
     4. Add compiler pass for services.

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<people>
+    <person>
+        <name>Zeratul</name>
+        <position>Marketing Manager</position>
+    </person>
+    <person>
+        <name>Robert California</name>
+        <positon>Scranton Strangler</positon>
+    </person>
+    <person>
+        <name>Squall Leonheart</name>
+        <position>Whatever</position>
+    </person>
+    <person>
+        <name>Jim Raynor</name>
+        <position>Market Manager</position>
+    </person>
+</people>

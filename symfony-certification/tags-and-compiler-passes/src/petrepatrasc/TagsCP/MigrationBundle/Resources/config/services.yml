@@ -1,0 +1,4 @@
+services:
+#    tags_cp_migration.example:
+#        class: petrepatrasc\TagsCP\MigrationBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
